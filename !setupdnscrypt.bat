@@ -78,12 +78,16 @@ echo Set %interface% secondary to 1.1.1.1
 netsh interface ipv4 add dnsservers "%interface%" 1.1.1.1 index=2 >nul
 netsh interface ipv4 show dnsservers "%interface%"
 echo/
+ipconfig /flushdns
+echo/
 goto start
 
 :setback
 echo/
 netsh interface ipv4 set dnsservers "%interface%" dhcp
 netsh interface ipv4 show dnsservers "%interface%"
+echo/
+ipconfig /flushdns
 echo/
 goto start
 
